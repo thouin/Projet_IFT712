@@ -6,14 +6,19 @@ import Classification_Models as cm
 def main():
     if len(sys.argv) < 2:
         print("Usage: python Classification.py model\n")
-        print("\t model: Choose a classificattion model\n")
+        print("\t model: Choose a classification model\n")
+        print("\t models to choose: 'Regression_logistique' or 'SVM_Sigmoide_Kernel' \n")
         print(" example: python3 Classification.py Regression_logistique\n")
         return
 
     model = sys.argv[1]
 
     # Entrainement du modele de classification
-    classification = cm.Regression_Logistique()
+    if model =='Regression_logistique' :
+        classification = cm.Regression_Logistique()
+    if model =='SVM_Sigmoide_Kernel' :
+        classification = cm.SVM_Sigmoide_Kernel()
+
     classification.entrainement(data.X_train, data.Y_train)
 
     # Predictions sur les ensembles d'entrainement et de test
