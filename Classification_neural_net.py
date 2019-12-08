@@ -47,4 +47,7 @@ class neural_net:
         # TODO: Avertissement si on atteint le nombre maximal d'itération
         return train_loss_list, train_accu_list, valid_loss_list, valid_accu_list
 
+    def prediction(self, x):
+        return self.model.predict(x)
+
         
