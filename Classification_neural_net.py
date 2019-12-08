@@ -34,8 +34,8 @@ class neural_net:
         valid_loss_list.append(valid_loss)
         train_accu_list.append(train_accu)
         valid_accu_list.append(valid_accu)
-        delta_loss = 2*tol # On initialise à une valeur plus grande que tol
-        for i in range(self.max_iter):
+        delta_loss = 0
+        for i in range(self.max_iter-1):
             train_loss, train_accu, valid_loss, valid_accu = __epoch(x_train, y_train, x_valid, y_valid)
             train_lost_list.append(train_loss)
             valid_loss_list.append(valid_loss)
