@@ -1,4 +1,4 @@
-from numpy import argmax
+import numpy as np
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics.log_loss import log_loss
 
