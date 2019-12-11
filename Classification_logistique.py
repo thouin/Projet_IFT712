@@ -31,7 +31,28 @@ class Regression_Logistique:
         return train_loss, train_accu, valid_loss, valid_accu
 
     def entrainement(self, x_train, x_train):
-        self.fit(x_train, y_train).score(x_train, y_train), self.model.score(x_train, t_train)
+        train_loss_list = []
+        valid_loss_list = []
+        train_accu_list = []
+        valid_accu_list = []
+        train_loss, train_accu, valid_loss, valid_accu = self.__epoch(x_train, y_train, x_valid, y_valid)
+        train_lost_list.append(train_loss)
+        valid_loss_list.append(valid_loss)
+        train_accu_list.append(train_accu)
+        valid_accu_list.append(valid_accu)
+        delta_loss = 0
+        for i in range(self.max_iter-1):
+            train_loss, train_accu, valid_loss, valid_accu = self.__epoch(x_train, y_train, x_valid, y_valid)
+            train_lost_list.append(train_loss)
+            valid_loss_list.append(valid_loss)
+            train_accu_list.append(train_accu)
+            valid_accu_list.append(valid_accu)
+            delta_loss = train_loss_list[-1] - train_loss_list[-2]
+            if delta_loss < tol:
+                break
+        if delta_loss >= tol:
+            warnings.warn("neural_net: Nombre maximal d'itération atteint")
+        return train_loss_list, train_accu_list, valid_loss_list, valid_accu_list
 
     def prediction(self, x):
         a = self.model.predict(x)
