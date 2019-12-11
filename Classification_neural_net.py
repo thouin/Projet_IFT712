@@ -13,7 +13,7 @@ class neural_net:
         self.hidden_layers = hidden_layers
         self.tol = tol
         self.max_iter = max_iter
-        self.model = MLPClassifier(hidden_layers_sizes=hidden_layers, activation=activation, solver=solver, momentum=mu, learning_rate_init=lr, alpha=l2reg)
+        self.model = MLPClassifier(hidden_layers_sizes=hidden_layers, activation=activation, solver=solver, momentum=mu, learning_rate_init=lr, alpha=l2reg, tol=tol, max_iter=max_iter)
 
     def fit(self, data, target):
         self.model.fit(data, target)
