@@ -28,7 +28,7 @@ class SVM_Sigmoide_Kernel:
 class Regression_Logistique:
     def __init__(self):
         print("-------- Application de la régression linéaire --------")
-        self.model = LogisticRegression(solver='lbfgs', multi_class='auto',max_iter=10000)
+        self.model = LogisticRegression(solver='lbfgs', multi_class='multinomial',max_iter=10000)
         
     def fit(self, data, target):
         self.model.fit(data, target)
