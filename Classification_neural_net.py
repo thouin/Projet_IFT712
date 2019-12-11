@@ -9,6 +9,14 @@ class neural_net:
         self.tol = tol
         self.max_iter = max_iter
 
+    def fit(self, data, target):
+        self.model.fit(data, target)
+        return self
+        
+    def score(self, data, target):
+        pred = self.model.predict_proba(data)
+        return -log_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
+
     def __epoch(x_train, y_train, x_valid, y_valid, num_classes=3):
         classes = np.aranges(num_classes)
         self.model.partial_fit(x_train, y_train, classes)
