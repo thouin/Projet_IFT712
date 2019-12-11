@@ -1,11 +1,11 @@
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import log_loss
 import numpy as np
 
 class Regression_Logistique:
     def __init__(self):
         print("-------- Application de la régression linéaire --------")
-        self.model = LogisticRegression(solver='lbfgs', multi_class='multinomial',max_iter=10000)
+        self.model = SGDClassifier(loss='log', fit_Intercept=False)
         
     def fit(self, data, target):
         self.model.fit(data, target)
