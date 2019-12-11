@@ -9,7 +9,7 @@ class Regression_Logistique:
         self.lr = lr
         self.tol = tol
         self.max_iter = max_iter
-        self.model = SGDClassifier(loss='log', fit_Intercept=False, alpha=l2reg, learning_rate=lr)
+        self.model = SGDClassifier(loss='log', fit_Intercept=False, alpha=l2reg, learning_rate=lr, tol=tol, max_iter=max_iter)
         
     def fit(self, data, target):
         self.model.fit(data, target)
