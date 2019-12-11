@@ -13,7 +13,7 @@ class SVM_Sigmoide_Kernel:
         return self
         
     def score(self, data, target):
-        pred = self.model.predict_proba(data)
+        pred = self.model.descision_function(data)
         return -hinge_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
 
     def entrainement(self, x_train, x_train):
