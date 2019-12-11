@@ -5,9 +5,23 @@ from sklearn.metrics.log_loss import log_loss
 class neural_net:
     def __init__(self, activation='relu', l2reg=0.0, lr=0.001, solver='adam', mu=0.9, hidden_layers=(6, 6), tol=1e-4, max_iter=200):
         print("-------- Application d'un réseau de neurone --------")
-        self.model = MLPClassifier(hidden_layers_sizes=hidden_layers, activation=activation, solver=solver, momentum=mu, learning_rate_init=lr, alpha=l2reg)
+        self.activation = activation
+        self.l2reg = l2reg
+        self.lr = lr
+        self.solver = solver
+        self.mu = mu
+        self.hidden_layers = hidden_layers
         self.tol = tol
         self.max_iter = max_iter
+        self.model = MLPClassifier(hidden_layers_sizes=hidden_layers, activation=activation, solver=solver, momentum=mu, learning_rate_init=lr, alpha=l2reg)
+
+    def fit(self, data, target):
+        self.model.fit(data, target)
+        return self
+        
+    def score(self, data, target):
+        pred = self.model.predict_proba(data)
+        return -log_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
 
     def __epoch(x_train, y_train, x_valid, y_valid, num_classes=3):
         classes = np.aranges(num_classes)
