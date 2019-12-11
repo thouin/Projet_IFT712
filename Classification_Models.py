@@ -18,7 +18,7 @@ class SVM_Sigmoide_Kernel:
         return -hinge_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
 
     def entrainement(self, x_train, x_train):
-        self.model.fit(x_train, y_train).score(x_train, y_train)
+        return self.fit(x_train, y_train).score(x_train, y_train), self.model.score(x_train, t_train)
 
     def prediction(self, x):
         a = self.model.predict(x)
@@ -39,7 +39,7 @@ class Regression_Logistique:
         return -log_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
 
     def entrainement(self, x_train, x_train):
-        self.model.fit(x_train, y_train).score(x_train, y_train)
+        self.fit(x_train, y_train).score(x_train, y_train), self.model.score(x_train, t_train)
 
     def prediction(self, x):
         a = self.model.predict(x)
