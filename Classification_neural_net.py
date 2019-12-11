@@ -44,7 +44,8 @@ class neural_net:
             delta_loss = train_loss_list[-1] - train_loss_list[-2]
             if delta_loss < tol:
                 break
-        # TODO: Avertissement si on atteint le nombre maximal d'itération
+        if delta_loss >= tol:
+            warnings.warn("neural_net: Nombre maximal d'itération atteint")
         return train_loss_list, train_accu_list, valid_loss_list, valid_accu_list
 
     def prediction(self, x):
