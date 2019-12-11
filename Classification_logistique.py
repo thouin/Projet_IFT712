@@ -3,9 +3,13 @@ from sklearn.metrics import log_loss
 import numpy as np
 
 class Regression_Logistique:
-    def __init__(self):
+    def __init__(self, l2reg=0.0, lr=0.001, tol=1e-4, max_iter=200):
         print("-------- Application de la régression linéaire --------")
-        self.model = SGDClassifier(loss='log', fit_Intercept=False)
+        self.l2reg = l2reg
+        self.lr = lr
+        self.tol = tol
+        self.max_iter = max_iter
+        self.model = SGDClassifier(loss='log', fit_Intercept=False, alpha=l2reg, learning_rate=lr)
         
     def fit(self, data, target):
         self.model.fit(data, target)
