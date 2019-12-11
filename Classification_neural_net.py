@@ -1,7 +1,6 @@
 from numpy import argmax
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics.log_loss import log_loss
-import warnings
 
 class neural_net:
     def __init__(self, activation='relu', l2reg=0.0, lr=0.001, solver='adam', mu=0.9, hidden_layers=(6, 6), tol=1e-4, max_iter=200):
@@ -45,8 +44,7 @@ class neural_net:
             delta_loss = train_loss_list[-1] - train_loss_list[-2]
             if delta_loss < tol:
                 break
-        if (delta_loss >= tol):
-            warnings.warn("MLP: nombre maximal d'itération atteint")
+        # TODO: Avertissement si on atteint le nombre maximal d'itération
         return train_loss_list, train_accu_list, valid_loss_list, valid_accu_list
 
     def prediction(self, x):
