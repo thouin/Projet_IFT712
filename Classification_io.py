@@ -36,3 +36,9 @@ class io():
         ax2.plot(xdata, loss_val_curve, label='validation')
         ax2.legend()
         fig.savefig(filename)
+
+    @staticmethod
+    def print_params(params, filename):
+        with open(filename, 'w') as f:
+            for keys,values in cars.items():
+                f.write(keys + ': ' + values)
