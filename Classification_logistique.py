@@ -25,6 +25,7 @@ class Regression_Logistique(BaseEstimator):
     def __epoch(self,x_train, y_train, x_valid, y_valid):
         classes = np.arange(1, 4)
         self.model.partial_fit(x_train, y_train, classes)
+        print(self.model.coef_)
         # On calcule la loss pour les données de validation et d'entraînement
         y_train_pred = self.model.predict_proba(x_train)
         train_loss = log_loss(y_train, y_train_pred, normalize=True, labels=classes)
