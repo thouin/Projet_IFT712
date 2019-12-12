@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from sklearn.model_selection import GridSearchCV
+from sklearn.base import clone
 import Classification_logistique as cl
 import Classification_svm as cs
 import Classification_neural_net as cn
@@ -26,11 +27,11 @@ def HyperparameterLogistique(x_train, y_train):
     estimator = cl.Regression_Logistique()
     param_grid = {
         'l2reg' : np.linspace(0.1, 1, 10),
-        'lr' : np.linspace(0.01, 0.1, 100)
+        'lr' : np.linspace(0.0001, 0.001, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
-    return search.best_estimator(), search.best_params()
+    return clone(search.best_estimator()), search.best_params()
 
 def HyperparameterSVM(x_train, y_train):
     return cs.SVM_Sigmoide_Kernel()
@@ -45,7 +46,7 @@ def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
-    return search.best_estimator(), search.best_params()
+    return clone(search.best_estimator()), search.best_params()
 
 def HyperparameterAdaboost(x_train, y_train):
     estimator = ca.adaboost()
@@ -55,7 +56,7 @@ def HyperparameterAdaboost(x_train, y_train):
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
-    return search.best_estimator(), search.best_params()
+    return clone(search.best_estimator()), search.best_params()
 
 def HyperparameterBagging(x_train, y_train):
     estimator = cb.bagging()
@@ -68,5 +69,5 @@ def HyperparameterBagging(x_train, y_train):
 
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
-    return search.best_estimator(), search.best_params()
+    return clone(search.best_estimator()), search.best_params()
 

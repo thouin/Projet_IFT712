@@ -24,8 +24,7 @@ class neural_net(BaseEstimator):
         return self
         
     def score(self, data, target):
-        pred = self.model.predict_proba(data)
-        return -log_loss(target, pred, labels=np.arange(1, 4)) # TODO: Add regularisation term
+        return self.model.score(data, target)
 
     def __epoch(self,x_train, y_train, x_valid, y_valid):
         classes = np.arange(1, 4)

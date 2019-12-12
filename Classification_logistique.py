@@ -20,11 +20,10 @@ class Regression_Logistique(BaseEstimator):
         return self
         
     def score(self, data, target):
-        pred = self.model.predict_proba(data)
-        return -log_loss(target, pred, labels=np.arange(1, 4)) # TODO: Add regularisation term
+        return self.model.score(data, target)
 
     def __epoch(self,x_train, y_train, x_valid, y_valid):
-        classes = np.aranges(1, 4)
+        classes = np.arange(1, 4)
         self.model.partial_fit(x_train, y_train, classes)
         # On calcule la loss pour les données de validation et d'entraînement
         y_train_pred = self.model.predict_proba(x_train)
