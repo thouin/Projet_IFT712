@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import numpy as np
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import log_loss

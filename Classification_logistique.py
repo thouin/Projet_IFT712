@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import log_loss
 import numpy as np

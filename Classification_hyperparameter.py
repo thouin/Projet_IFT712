@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from sklearn.model_selection import GridSearchCV
 import Classification_logistique as cl
 import Classification_svm as cs

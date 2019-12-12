@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from sklearn.ensemble import BaggingClassifier
 import Classification_adaboost as ca
 
