@@ -1,7 +1,15 @@
 import sys
 import numpy as np
 from Classification_io import io
-import Classification_Models as cm
+import Classification_hyperparameter as ch
+import Classification_io as ci
+
+def logistique(X_train, X_test, Y_train, Y_test):
+    print("-------- Application de la régression linéaire --------")
+    est, params = ch.HyperparameterLogistique(x_train, y_train)
+    train_loss_list, train_accu_list, test_loss_list, test_accu_list = est.entrainement(x_train, y_train, x_test, y_test)
+    ci.io.plot(train_loss_list, train_accu_list, valid_loss_list, valid_accu_list, 'logistique.png')
+    ci.io.print_params(params, 'logistique.txt')
 
 def main():
     if len(sys.argv) < 2:
