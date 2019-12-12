@@ -46,7 +46,7 @@ def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
     param_grid = {
         'activation' : ['logistique', 'relu'],
         'l2reg' : np.linspace(0.1, 10, 10),
-        'lr' : np.linspace(0.01, 1, 100),
+        'lr' : np.linspace(0.01, 1, 10),
         'mu' : np.linspace(0, 1, 10)
     }
     search = HyperparameterSearch(estimator, param_grid)
