@@ -4,7 +4,6 @@ import numpy as np
 
 class SVM_Sigmoide_Kernel:
     def __init__(self, coef):
-        print("-------- Application de SVM avec sigmoide --------")
         self.coef = coef
         self.model = SVC(kernel='sigmoid', gamma='scale', coef0=coef)
 
@@ -16,9 +15,6 @@ class SVM_Sigmoide_Kernel:
         pred = self.model.descision_function(data)
         return -hinge_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
 
-    def entrainement(self, x_train, x_train):
-        return self.fit(x_train, y_train).score(x_train, y_train), self.model.score(x_train, t_train)
+    def entrainement(self, x_train, x_train, x_test, y_test):
+        return -self.fit(x_train, y_train).score(x_train, y_train), self.model.score(x_train, t_train), -self.score(x_test, y_test), self.model.score(x_test, y_test)
 
-    def prediction(self, x):
-        a = self.model.predict(x)
-        return a
