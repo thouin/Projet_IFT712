@@ -37,7 +37,7 @@ class io():
         
         ax2.set_ylabel('accuracy')
         ax2.plot(xdata, train_accu_list, label='training')
-        ax2.plot(xdata, train_accu_list, label='test')
+        ax2.plot(xdata, test_accu_list, label='test')
         ax2.legend()
         fig.savefig(filename)
 

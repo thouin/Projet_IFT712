@@ -69,8 +69,9 @@ def HyperparameterBagging(x_train, y_train):
     neural_net, _ = HyperparameterNeuralNet(x_train, y_train)
     param_grid = {
         'estimator' : [adaboost, neural_net],
-        'n_estimator' : np.arange(1, 10),
+        'n_estimators' : np.arange(1, 10),
     }
+
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
     return search.best_estimator(), search.best_params()
