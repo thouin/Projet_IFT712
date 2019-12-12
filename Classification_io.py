@@ -27,17 +27,17 @@ class io():
         return X_train, X_test, Y_train, Y_test
     
     @staticmethod
-    def plot(train_loss_list, train_accu_list, valid_loss_list, valid_accu_list, filename):
+    def plot(train_loss_list, train_accu_list, test_loss_list, test_accu_list, filename):
         xdata = np.arange(1, len(train_loss_list) + 1)
         fig, (ax1, ax2) = plt.subplots(2)
-        ax1.ylabel('loss')
-        ax1.plot(xdata, loss_train_curve, label='training')
-        ax1.plot(xdata, loss_val_curve, label='validation')
+        ax1.set_ylabel('loss')
+        ax1.plot(xdata, train_loss_list, label='training')
+        ax1.plot(xdata, test_loss_list, label='test')
         ax1.legend()
         
-        ax2.ylabel('accuracy')
-        ax2.plot(xdata, loss_train_curve, label='training')
-        ax2.plot(xdata, loss_val_curve, label='validation')
+        ax2.set_ylabel('accuracy')
+        ax2.plot(xdata, train_accu_list, label='training')
+        ax2.plot(xdata, train_accu_list, label='test')
         ax2.legend()
         fig.savefig(filename)
 
