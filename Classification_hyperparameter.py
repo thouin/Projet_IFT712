@@ -2,6 +2,7 @@ from sklearn.model_selection import GridSearchCV
 import Classification_logistique as cl
 import Classification_svm as cs
 import Classification_neural_net as cn
+import Classification_adaboost as ca
 import numpy as np
 
 class HyperparameterSearch:
@@ -45,3 +46,11 @@ def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
     search = HyperparameterSearch(estimator, param_grid)
     return search.best_estimator(), search.best_params()
 
+def HyperparameterAdaboost(x_train, y_train):
+    estimator = ca.adaboost()
+    param_grid = {
+        'n_estimators' : np.arange(1, 101),
+        'lr' : np.linspace(0.01, 1, 0.01)
+    }
+    search = HyperparameterSearch(estimator, param_grid)
+    return search.best_estimator(), search.best_params()
