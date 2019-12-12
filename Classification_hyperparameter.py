@@ -10,16 +10,16 @@ import Classification_bagging as cb
 import numpy as np
 
 class HyperparameterSearch:
-    def __init__(estimator, param_grid):
+    def __init__(self, estimator, param_grid):
         self.grid = GridSearchCV(estimator, param_grid, n_jobs=-1)
 
-    def fit(x_train, y_train):
+    def fit(self, x_train, y_train):
         self.grid.fit(x_train, y_train)
 
-    def best_estimator():
+    def best_estimator(self):
         return self.grid.best_estimator_
 
-    def best_params():
+    def best_params(self):
         return self.grid.best_params_
 
 def HyperparameterLogistique(x_train, y_train):
