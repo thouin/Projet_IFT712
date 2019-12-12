@@ -1,4 +1,6 @@
 from sklearn.model_selection import GridSearchCV
+import Classification_logistique as cl
+import numpy as np
 
 class HyperparameterSearch:
     def __init__(estimator, param_grid):
@@ -12,3 +14,13 @@ class HyperparameterSearch:
 
     def best_params():
         return self.grid.best_params_
+
+def HyperparameterLogistique(x_train, y_train):
+    estimator = cl.Regression_Logistique()
+    param_grid = {
+        'l2reg' : np.linspace(0, 10, 0.1),
+        'lr' : np.linspace(0.01, 1, 0.01)
+    }
+    search = HyperparameterSearch(estimator, param_grid)
+    return search.best_estimator(), search.best_params()
+
