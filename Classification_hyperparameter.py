@@ -25,8 +25,8 @@ class HyperparameterSearch:
 def HyperparameterLogistique(x_train, y_train):
     estimator = cl.Regression_Logistique()
     param_grid = {
-        'l2reg' : np.linspace(0.1, 10, 10),
-        'lr' : np.linspace(0.01, 1, 100)
+        'l2reg' : np.linspace(0.1, 1, 10),
+        'lr' : np.linspace(0.01, 0.1, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
