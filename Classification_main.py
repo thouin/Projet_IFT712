@@ -33,16 +33,16 @@ def neural_net(X_train, X_test, Y_train, Y_test):
 def adaboost(X_train, X_test, Y_train, Y_test):
     print("-------- Application de adaboost avec un arbre de décision de profondeur un --------")
     est, params = ch.HyperparameterAdaboost(x_train, y_train)
-    train_loss, train_accu, test_loss, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
+    train_accu, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
     ci.io.print_params(params, 'adaboost_param.txt')
-    ci.io.print_errors(train_loss, train_accu, test_loss, test_accu, 'adaboost_error.txt')
+    ci.io.print_scores(train_accu, test_accu, 'adaboost_error.txt')
 
 def bagging(X_train, X_test, Y_train, Y_test):
     print("-------- Application de bagging --------")
     est, params = ch.HyperparameterBagging(x_train, y_train)
-    train_loss, train_accu, test_loss, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
+    train_accu, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
     ci.io.print_params(params, 'bagging_param.txt')
-    ci.io.print_errors(train_loss, train_accu, test_loss, test_accu, 'bagging_error.txt')
+    ci.io.print_scores(train_accu, test_accu, 'bagging_error.txt')
 
 def main():
     if len(sys.argv) < 2:
