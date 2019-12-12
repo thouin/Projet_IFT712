@@ -9,7 +9,6 @@ import warnings
 
 class neural_net(BaseEstimator):
     def __init__(self, activation='relu', l2reg=0.0, lr=0.001, solver='adam', mu=0.9, hidden_layers=(6, 6), tol=1e-4, max_iter=200):
-        print("-------- Application d'un réseau de neurone --------")
         self.activation = activation
         self.l2reg = l2reg
         self.lr = lr
