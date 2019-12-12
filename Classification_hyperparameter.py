@@ -1,6 +1,7 @@
 from sklearn.model_selection import GridSearchCV
 import Classification_logistique as cl
 import Classification_svm as cs
+import Classification_neural_net as cn
 import numpy as np
 
 class HyperparameterSearch:
@@ -29,6 +30,17 @@ def HyperparameterSVM(x_train, y_train):
     estimator = cs.SVM_Sigmoide_Kernel()
     param_grid = {
         'coef' : np.linspace(-1, 1, 0.1)
+    }
+    search = HyperparameterSearch(estimator, param_grid)
+    return search.best_estimator(), search.best_params()
+
+def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
+    estimator = cn.neural_net(hidden_layers)
+    param_grid = {
+        'activation' : ['logistique', 'relu'],
+        'l2reg' : np.linspace(0.1, 10, 0.1),
+        'lr' : np.linspace(0.01, 1, 0.01),
+        'mu' : np.linspace(0, 1, 0.01)
     }
     search = HyperparameterSearch(estimator, param_grid)
     return search.best_estimator(), search.best_params()
