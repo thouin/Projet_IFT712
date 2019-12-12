@@ -23,44 +23,44 @@ class neural_net:
         pred = self.model.predict_proba(data)
         return -log_loss(target, pred, labels=np.arange(3)) # TODO: Add regularisation term
 
-    def __epoch(x_train, y_train, x_valid, y_valid, num_classes=3):
+    def __epoch(x_train, y_train, x_test, y_test, num_classes=3):
         classes = np.aranges(num_classes)
         self.model.partial_fit(x_train, y_train, classes)
-        # On calcule la loss pour les données de validation et d'entraînement
-        t_train_pred = self.model.predict_proba(x_train)
+        # On calcule la loss pour les données de testation et d'entraînement
+        y_train_pred = self.model.predict_proba(x_train)
         train_loss = log_loss(y_train, y_train_pred, normalize=True, labels=classes)
-        t_valid_pred = self.model.predict_proba(x_valid)
-        valid_loss = log_loss(y_valid, y_valid_pred, normalize=True, labels=classes)
-        # On calcule la justesse pour les données de validation et d'entraînement
-        y_train_pred = argmax(t_train_pred, axis=1)
-        train_accu = (y_train_pred == y_train).mean()
-        y_valid_pred = argmax(t_valid_pred, axis=1)
-        valid_accu = (y_valid_pred == y_valid).mean()
-        return train_loss, train_accu, valid_loss, valid_accu
+        y_test_pred = self.model.predict_proba(x_test)
+        test_loss = log_loss(y_test, y_test_pred, normalize=True, labels=classes)
+        # On calcule la justesse pour les données de testation et d'entraînement
+        t_train_pred = argmax(t_train_pred, axis=1)
+        train_accu = (t_train_pred == y_train).mean()
+        t_test_pred = argmax(t_test_pred, axis=1)
+        test_accu = (t_test_pred == y_test).mean()
+        return train_loss, train_accu, test_loss, test_accu
 
-    def entrainement(self, x_train, y_train, x_valid, y_valid):
+    def entrainement(self, x_train, y_train, x_test, y_test):
         train_loss_list = []
-        valid_loss_list = []
+        test_loss_list = []
         train_accu_list = []
-        valid_accu_list = []
-        train_loss, train_accu, valid_loss, valid_accu = self.__epoch(x_train, y_train, x_valid, y_valid)
+        test_accu_list = []
+        train_loss, train_accu, test_loss, test_accu = self.__epoch(x_train, y_train, x_test, y_test)
         train_lost_list.append(train_loss)
-        valid_loss_list.append(valid_loss)
+        test_loss_list.append(test_loss)
         train_accu_list.append(train_accu)
-        valid_accu_list.append(valid_accu)
+        test_accu_list.append(test_accu)
         delta_loss = 0
         for i in range(self.max_iter-1):
-            train_loss, train_accu, valid_loss, valid_accu = self.__epoch(x_train, y_train, x_valid, y_valid)
+            train_loss, train_accu, test_loss, test_accu = self.__epoch(x_train, y_train, x_test, y_test)
             train_lost_list.append(train_loss)
-            valid_loss_list.append(valid_loss)
+            test_loss_list.append(test_loss)
             train_accu_list.append(train_accu)
-            valid_accu_list.append(valid_accu)
+            test_accu_list.append(test_accu)
             delta_loss = train_loss_list[-1] - train_loss_list[-2]
             if delta_loss < tol:
                 break
         if delta_loss >= tol:
             warnings.warn("neural_net: Nombre maximal d'itération atteint")
-        return train_loss_list, train_accu_list, valid_loss_list, valid_accu_list
+        return train_loss_list, train_accu_list, test_loss_list, test_accu_list
 
     def prediction(self, x):
         return self.model.predict(x)
