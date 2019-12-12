@@ -58,6 +58,6 @@ class io():
     @staticmethod
     def print_scores(train_accu, test_accu, filename):
         with open(filename, 'w') as f:
-            f.write("Précision d'entraînement :", "%.4f" % train_accu)
-            f.write("Précision de test :", "%.4f" % test_accu)
+            f.write("Précision d'entraînement : %.4f" % train_accu)
+            f.write("Précision de test : %.4f" % test_accu)
 
