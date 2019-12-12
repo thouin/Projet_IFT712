@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-from Classification import Donnees_Wine as data
+from Classification_io import io
 import Classification_Models as cm
 
 def main():
@@ -19,6 +19,7 @@ def main():
     if model =='SVM_Sigmoide_Kernel' :
         classification = cm.SVM_Sigmoide_Kernel()
 
+    X_train, X_test, Y_train, Y_test = io.getData()
     classification.entrainement(data.X_train, data.Y_train)
 
     # Predictions sur les ensembles d'entrainement et de test
