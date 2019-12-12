@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 class io():
     @staticmethod
@@ -20,3 +21,18 @@ class io():
         X = df.loc[:, features]
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=0)
         return X_train, X_test, Y_train, Y_test
+    
+    @staticmethod
+    def plot(train_loss_list, train_accu_list, valid_loss_list, valid_accu_list, filename):
+        xdata = np.arange(1, len(loss_train_curve) + 1)
+        fig, (ax1, ax2) = plt.subplots(2)
+        ax1.ylabel('loss')
+        ax1.plot(xdata, loss_train_curve, label='training')
+        ax1.plot(xdata, loss_val_curve, label='validation')
+        ax1.legend()
+        
+        ax2.ylabel('accuracy')
+        ax2.plot(xdata, loss_train_curve, label='training')
+        ax2.plot(xdata, loss_val_curve, label='validation')
+        ax2.legend()
+        fig.savefig(filename)
