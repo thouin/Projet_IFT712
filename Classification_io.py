@@ -28,7 +28,7 @@ class io():
     
     @staticmethod
     def plot(train_loss_list, train_accu_list, valid_loss_list, valid_accu_list, filename):
-        xdata = np.arange(1, len(loss_train_list) + 1)
+        xdata = np.arange(1, len(train_loss_list) + 1)
         fig, (ax1, ax2) = plt.subplots(2)
         ax1.ylabel('loss')
         ax1.plot(xdata, loss_train_curve, label='training')
