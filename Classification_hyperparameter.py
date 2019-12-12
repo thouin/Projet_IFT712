@@ -29,6 +29,7 @@ def HyperparameterLogistique(x_train, y_train):
         'lr' : np.linspace(0.01, 1, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
+    search.fit(x_train, y_train)
     return search.best_estimator(), search.best_params()
 
 def HyperparameterSVM(x_train, y_train):
@@ -37,6 +38,7 @@ def HyperparameterSVM(x_train, y_train):
         'coef' : np.linspace(-1, 1, 0.1)
     }
     search = HyperparameterSearch(estimator, param_grid)
+    search.fit(x_train, y_train)
     return search.best_estimator(), search.best_params()
 
 def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
@@ -48,6 +50,7 @@ def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
         'mu' : np.linspace(0, 1, 10)
     }
     search = HyperparameterSearch(estimator, param_grid)
+    search.fit(x_train, y_train)
     return search.best_estimator(), search.best_params()
 
 def HyperparameterAdaboost(x_train, y_train):
@@ -57,6 +60,7 @@ def HyperparameterAdaboost(x_train, y_train):
         'lr' : np.linspace(0.01, 1, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
+    search.fit(x_train, y_train)
     return search.best_estimator(), search.best_params()
 
 def HyperparameterBagging(x_train, y_train):
@@ -68,5 +72,6 @@ def HyperparameterBagging(x_train, y_train):
         'n_estimator' : np.arange(1, 10),
     }
     search = HyperparameterSearch(estimator, param_grid)
+    search.fit(x_train, y_train)
     return search.best_estimator(), search.best_params()
 
