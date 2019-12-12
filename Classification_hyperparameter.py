@@ -42,7 +42,7 @@ def HyperparameterSVM(x_train, y_train):
     return search.best_estimator(), search.best_params()
 
 def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
-    estimator = cn.neural_net(hidden_layers)
+    estimator = cn.neural_net(hidden_layers=hidden_layers)
     param_grid = {
         'activation' : ['logistique', 'relu'],
         'l2reg' : np.linspace(0.1, 10, 10),
