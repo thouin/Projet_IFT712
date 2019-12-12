@@ -7,9 +7,8 @@ from sklearn.metrics import hinge_loss
 import numpy as np
 
 class SVM_Sigmoide_Kernel(BaseEstimator):
-    def __init__(self, coef=0.0):
-        self.coef = coef
-        self.model = SVC(kernel='sigmoid', gamma='scale', coef0=coef)
+    def __init__(self):
+        self.model = SVC(kernel='rbf', gamma='scale')
 
     def fit(self, data, target):
         self.model.fit(data, target)

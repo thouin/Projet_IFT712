@@ -16,9 +16,8 @@ def logistique(x_train, x_test, y_train, y_test):
 
 def svm(x_train, x_test, y_train, y_test):
     print("-------- Application de SVM avec sigmoide --------")
-    est, params = ch.HyperparameterSVM(x_train, y_train)
+    est = ch.HyperparameterSVM(x_train, y_train)
     train_loss, train_accu, test_loss, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
-    ci.io.print_params(params, 'svm_param.txt')
     ci.io.print_errors(train_loss, train_accu, test_loss, test_accu, 'svm_error.txt')
 
 def neural_net(x_train, x_test, y_train, y_test):
