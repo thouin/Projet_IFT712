@@ -16,6 +16,3 @@ class adaboost:
     def entrainement(self, x_train, y_train, x_test, y_test):
         return self.fit(y_train, y_train).score(x_train, y_train), self.score(x_test, y_test)
 
-    def prediction(self, x):
-        a = self.model.predict(x)
-        return a
