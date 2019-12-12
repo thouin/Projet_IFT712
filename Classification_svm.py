@@ -3,9 +3,10 @@ from sklearn.metrics import hinge_loss
 import numpy as np
 
 class SVM_Sigmoide_Kernel:
-    def __init__(self):
+    def __init__(self, coef):
         print("-------- Application de SVM avec sigmoide --------")
-        self.model = SVC(kernel='sigmoid',gamma='scale')
+        self.coef = coef
+        self.model = SVC(kernel='sigmoid', gamma='scale', coef0=coef)
 
     def fit(self, data, target):
         self.model.fit(data, target)
