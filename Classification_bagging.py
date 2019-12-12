@@ -5,7 +5,6 @@ class bagging:
     def __init__(self, estimator=ca.adaboost, n_estimators=10):
         self.estimator = estimator
         self.n_estimators = n_estimators
-        self.max_sample = max_sample
         self.model = BaggingClassifier(estimator=estimator, n_estimators=n_estimators, n_jobs=-1)
         
     def fit(self, data, target):
