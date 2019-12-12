@@ -30,6 +30,13 @@ def neural_net(X_train, X_test, Y_train, Y_test):
     ci.io.plot(train_loss_list, train_accu_list, valid_loss_list, valid_accu_list, 'neural_net66.png')
     ci.io.print_params(params, 'neural_net66_param.txt')
 
+def adaboost(X_train, X_test, Y_train, Y_test):
+    print("-------- Application de adaboost avec un arbre de décision de profondeur un --------")
+    est, params = ch.HyperparameterAdaboost(x_train, y_train)
+    train_loss, train_accu, test_loss, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
+    ci.io.print_params(params, 'adaboost_param.txt')
+    ci.io.print_errors(train_loss, train_accu, test_loss, test_accu, 'adaboost_error.txt')
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python Classification.py model\n")
