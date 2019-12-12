@@ -25,8 +25,8 @@ class HyperparameterSearch:
 def HyperparameterLogistique(x_train, y_train):
     estimator = cl.Regression_Logistique()
     param_grid = {
-        'l2reg' : np.linspace(0.1, 10, 0.1),
-        'lr' : np.linspace(0.01, 1, 0.01)
+        'l2reg' : np.linspace(0.1, 10, 10),
+        'lr' : np.linspace(0.01, 1, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
     return search.best_estimator(), search.best_params()
@@ -43,9 +43,9 @@ def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
     estimator = cn.neural_net(hidden_layers)
     param_grid = {
         'activation' : ['logistique', 'relu'],
-        'l2reg' : np.linspace(0.1, 10, 0.1),
-        'lr' : np.linspace(0.01, 1, 0.01),
-        'mu' : np.linspace(0, 1, 0.01)
+        'l2reg' : np.linspace(0.1, 10, 10),
+        'lr' : np.linspace(0.01, 1, 100),
+        'mu' : np.linspace(0, 1, 10)
     }
     search = HyperparameterSearch(estimator, param_grid)
     return search.best_estimator(), search.best_params()
@@ -54,7 +54,7 @@ def HyperparameterAdaboost(x_train, y_train):
     estimator = ca.adaboost()
     param_grid = {
         'n_estimators' : np.arange(1, 101),
-        'lr' : np.linspace(0.01, 1, 0.01)
+        'lr' : np.linspace(0.01, 1, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
     return search.best_estimator(), search.best_params()
