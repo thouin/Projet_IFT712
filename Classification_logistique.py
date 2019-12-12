@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from sklearn.base import BaseEstimator
 from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import log_loss
 import numpy as np
 import warnings
 
-class Regression_Logistique:
+class Regression_Logistique(BaseEstimator):
     def __init__(self, l2reg=0.0001, lr=0.001, tol=1e-4, max_iter=200):
         print("-------- Application de la régression linéaire --------")
         self.l2reg = l2reg

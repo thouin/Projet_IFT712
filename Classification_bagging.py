@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from sklearn.base import BaseEstimator
 from sklearn.ensemble import BaggingClassifier
 import Classification_adaboost as ca
 
-class bagging:
+class bagging(BaseEstimator):
     def __init__(self, estimator=ca.adaboost, n_estimators=10):
         self.estimator = estimator
         self.n_estimators = n_estimators

@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from sklearn.base import BaseEstimator
 from sklearn.ensemble import AdaBoostClassifier
 
-class adaboost:
+class adaboost(BaseEstimator):
     def __init__(self, n_estimators, lr):
         self.n_estimators = n_estimators
         self.lr = lr

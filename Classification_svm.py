@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from sklearn.base import BaseEstimator
 from sklearn.svm import SVC
 from sklearn.metrics import hinge_loss
 import numpy as np
 
-class SVM_Sigmoide_Kernel:
+class SVM_Sigmoide_Kernel(BaseEstimator):
     def __init__(self, coef):
         self.coef = coef
         self.model = SVC(kernel='sigmoid', gamma='scale', coef0=coef)
