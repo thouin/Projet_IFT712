@@ -44,15 +44,15 @@ class io():
     def print_params(params, filename):
         with open(filename, 'w') as f:
             for keys,values in params.items():
-                f.write(keys + ': ' + values)
+                f.write(keys + ': ' + str(values))
 
     @staticmethod
     def print_errors(train_loss, train_accu, test_loss, test_accu, filename):
         with open(filename, 'w') as f:
-            f.write("Erreur d'entraînement :", "%.4f" % train_loss)
-            f.write("Erreur de test :", "%.4f" % test_loss)
-            f.write("Précision d'entraînement :", "%.4f" % train_accu)
-            f.write("Précision de test :", "%.4f" % test_accu)
+            f.write("Erreur d'entraînement : %.4f" % train_loss)
+            f.write("Erreur de test : %.4f" % test_loss)
+            f.write("Précision d'entraînement : %.4f" % train_accu)
+            f.write("Précision de test : %.4f" % test_accu)
 
     @staticmethod
     def print_scores(train_accu, test_accu, filename):
