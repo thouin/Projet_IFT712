@@ -37,6 +37,13 @@ def adaboost(X_train, X_test, Y_train, Y_test):
     ci.io.print_params(params, 'adaboost_param.txt')
     ci.io.print_errors(train_loss, train_accu, test_loss, test_accu, 'adaboost_error.txt')
 
+def bagging(X_train, X_test, Y_train, Y_test):
+    print("-------- Application de bagging --------")
+    est, params = ch.HyperparameterBagging(x_train, y_train)
+    train_loss, train_accu, test_loss, test_accu = est.entrainement(x_train, y_train, x_test, y_test)
+    ci.io.print_params(params, 'adaboost_param.txt')
+    ci.io.print_errors(train_loss, train_accu, test_loss, test_accu, 'adaboost_error.txt')
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python Classification.py model\n")
