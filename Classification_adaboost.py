@@ -5,7 +5,7 @@ from sklearn.base import BaseEstimator
 from sklearn.ensemble import AdaBoostClassifier
 
 class adaboost(BaseEstimator):
-    def __init__(self, n_estimators, lr):
+    def __init__(self, n_estimators=10, lr=0.1):
         self.n_estimators = n_estimators
         self.lr = lr
         self.model = AdaBoostClassifier(n_estimators=n_estimators, learning_rate=lr)
