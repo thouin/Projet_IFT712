@@ -35,7 +35,7 @@ def HyperparameterLogistique(x_train, y_train):
 def HyperparameterSVM(x_train, y_train):
     estimator = cs.SVM_Sigmoide_Kernel()
     param_grid = {
-        'coef' : np.linspace(-1, 1, 0.1)
+        'coef' : np.linspace(-1, 1, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
