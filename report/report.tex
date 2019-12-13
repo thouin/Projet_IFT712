@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt, openany]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[frenchb]{babel}
+\usepackage{enumitem}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{import} 
+\usepackage{hyperref}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newtheorem{definition}{Définition}[section]
+\colorlet{mdtRed}{red!50!black}
+\renewcommand\thesection{\arabic{section}}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parindent}{0.7cm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{lettrine}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{smartdiagram}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{mathptmx}
+\usepackage{bm}
+\usepackage{pdfpages}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\renewcommand{\mathbf}[1]{\textbf{\mathversion{bold}$#1$}}
+\renewcommand{\textbf}[1]{\begingroup\bfseries\mathversion{bold}#1\endgroup}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\leftmark}
+\lfoot{\small Projet IFT712 }
+\cfoot{\thepage}
+\rfoot{\small 2019-2020}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\include{00_page_de_garde}
+
+\tableofcontents
+\clearpage
+
+\addcontentsline{toc}{chapter}{Table des figures}
+\listoffigures
+\clearpage
+
+
+ \include{01_presentation_du_projet}
+ \include{02_les_algorithmes}
+ \include{03_analyse}
+
+\end{document}
+

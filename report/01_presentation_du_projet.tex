@@ -1,0 +1,29 @@
+\chapter{Présentation du projet}
+\section{Présentation}
+\par Ce projet de session fait partie des travaux du cours IFT712, il a pour objectif de tester quelques méthodes de classification sur une base de données
+Kaggle (www.kaggle.com) avec la bibliothèque Sklearn .
+\section{Choix de la base de données}
+\par Nous avons choisi comme base de données: "Wine Dataset".
+\par A propos de la base de données, les données sont le résultat d'une analyse chimique de vins cultivés dans une des régions d'Italie mais issus de trois cultivars différents.
+\par Parmi ses caracteristiques:
+\begin{itemize}[label=\textbullet]
+    \item 178 instances
+    \item 13 variables
+    \item les valeurs des attributs sont des Integer et des Float
+    \item Pas de valeurs manquantes
+    \item Généralement utilisé pour les tâches de classification
+\end{itemize}
+\section{Choix du design}
+\par Le projet contient 8 classes en total.
+\begin{itemize}[label=\textbullet]
+    \item La classe 'Classification\_main.py'
+    \item La classe 'Classification\_neural\_net.py': Décrit l'algorithme de classification par réseau de neurones.
+    \item La classe 'Classification\_logistique.py': S'agit de la classification par régréssion logistique.
+    \item La classe 'Classification\_bagging.py': Classification par l'algorithme Bagging.
+    \item La classe 'Classification\_adaboost.py': Classification par l'algorithme AdaBoost.
+    \item La classe 'Classification\_svm.py': Il s'agit du code correspondant au SVM.
+    \item La classe 'Classification\_hyperparameter.py': Il s'agit des techniques de la recherche des hypers paramètres pour chacun des algorithmes de classification.
+    \item La classe 'Classification\_io.py': Cette classe crée des données d"entrainement et de test à partir du "Wine Dataset" et a une fonction permettant l'affichage graphique.
+\end{itemize}
+\section{Gestion du projet}
+\par Pour la réalisation du projet, nous avons utilisé le gestionnaire de version de code "git" via la plateforme "gitHub"

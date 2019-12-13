@@ -1,0 +1,24 @@
+\chapter{Les algorithmes et démarche utilisés}
+\par Cette partie consiste à présenter les algorithmes utilisés, ainsi que la démarche scientifique suivie.
+\section{Algorithmes}
+Les algorithmes utilisés sont:
+\begin{itemize}[label=\textbullet]
+\item Régression logistique : les hyperparamètres sont le terme de régularisation et le taux d'apprentissage. Cette algorithme devrait bien performé si les données
+    sont linéairement séparable, ce qui est une hypothèse peut-être audacieuse.
+\item SVM : Nous utilisons le noyau rbf. Nous n'avons pas d'hyperparamètres pour cette algorithme de classification.
+\item Réseaux de neuronnes: Nous testons avec une ou deux couches de six neuronnes. Les hyperparamètres sont la fonction d'activation (relu ou logistique), le terme
+    de régularisation, le taux d'apprentissge et le momentum pour la descente de gradient.
+\item Bagging : Nous avons deux hyperparamètres. Le premier est l'estimateur (adaboost ou un réseau de neurones avec des couches de six neurones), le second est le
+    nombres d'estimateurs
+\item AdaBoost : Nous utilisons un arbre de décision de profondeur un comme estimateur de base. Nous avons deux hyperparamètres. Le premier est le nombre
+    d'estimateurs et le second est le taux d'apprentissage
+\end{itemize}
+
+\section{Démarche scientifique}
+\subsection{Organisation des données}
+\par Aprés la récupération des données du "Wine Dataset", on a divisé ces données en des données d'entrainement et des données de test. Cela se voit dans la classe: "Classification\_io.py". Avant de les utiliser, nous avons centré et réduit celles-ci. Nous avons fait attention à n'utiliser que les données d'entrainement pour trouver
+la transformation.
+\par Donc, l'entrainement et le test ont été fait sur deux données différentes: x\_train et x\_test.
+
+\subsection{Recherche des hyper-paramètres}
+\par La classe "Classification\_hyperparameter.py" est notre implémentation de la méthode de la recherche des hyper-paramètres. Ceci a été fait à l'aide de "GridSearchCV" de la biblithèque "sklearn.model\_selection"
