@@ -48,9 +48,9 @@ def bagging(x_train, x_test, y_train, y_test):
 
 def main():
     X_train, X_test, Y_train, Y_test = io.getData()
-    #logistique(X_train, X_test, Y_train, Y_test)
-    #svm(X_train, X_test, Y_train, Y_test)
-    #neural_net(X_train, X_test, Y_train, Y_test)
+    logistique(X_train, X_test, Y_train, Y_test)
+    svm(X_train, X_test, Y_train, Y_test)
+    neural_net(X_train, X_test, Y_train, Y_test)
     adaboost(X_train, X_test, Y_train, Y_test)
     bagging(X_train, X_test, Y_train, Y_test)
 
