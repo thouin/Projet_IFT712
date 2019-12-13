@@ -51,8 +51,8 @@ def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
 def HyperparameterAdaboost(x_train, y_train):
     estimator = ca.adaboost()
     param_grid = {
-        'n_estimators' : np.arange(1, 101),
-        'lr' : np.linspace(0.01, 1, 100)
+        'n_estimators' : np.arange(1, 20),
+        'lr' : np.linspace(0.01, 1, 10)
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)

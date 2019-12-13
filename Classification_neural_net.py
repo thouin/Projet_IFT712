@@ -61,7 +61,7 @@ class neural_net(BaseEstimator):
             valid_accu_list.append(valid_accu)
         return train_lost_list, train_accu_list, valid_loss_list, valid_accu_list
 
-    def prediction(self, x):
+    def predict(self, x):
         return self.model.predict(x)
 
         
