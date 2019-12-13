@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from sklearn.base import BaseEstimator
 from sklearn.ensemble import AdaBoostClassifier
 
-class adaboost:
-    def __init__(self, n_estimators, lr):
+class adaboost(BaseEstimator):
+    def __init__(self, n_estimators=10, lr=0.1):
         self.n_estimators = n_estimators
         self.lr = lr
         self.model = AdaBoostClassifier(n_estimators=n_estimators, learning_rate=lr)
@@ -13,9 +17,9 @@ class adaboost:
     def score(self, data, target):
         return self.model.score(data, target)
     
-    def entrainement(self, x_train, y_train):
-        return self.fit(y_train, y_train).score(x_train, y_train)
+    def predict(self, data):
+        return self.model.predict(data)
 
-    def prediction(self, x):
-        a = self.model.predict(x)
-        return a
+    def entrainement(self, x_train, y_train, x_test, y_test):
+        return self.fit(x_train, y_train).score(x_train, y_train), self.score(x_test, y_test)
+

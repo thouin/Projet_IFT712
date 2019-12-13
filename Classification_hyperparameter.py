@@ -1,4 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from sklearn.model_selection import GridSearchCV
+from sklearn.base import clone
 import Classification_logistique as cl
 import Classification_svm as cs
 import Classification_neural_net as cn
@@ -7,54 +11,52 @@ import Classification_bagging as cb
 import numpy as np
 
 class HyperparameterSearch:
-    def __init__(estimator, param_grid):
-        self.grid = GridSearchCV(estimator, param_grid, n_jobs=-1)
+    def __init__(self, estimator, param_grid):
+        self.grid = GridSearchCV(estimator, param_grid, n_jobs=-1, verbose=1)
 
-    def fit(x_train, y_train):
+    def fit(self, x_train, y_train):
         self.grid.fit(x_train, y_train)
 
-    def best_estimator():
+    def best_estimator(self):
         return self.grid.best_estimator_
 
-    def best_params():
+    def best_params(self):
         return self.grid.best_params_
 
 def HyperparameterLogistique(x_train, y_train):
     estimator = cl.Regression_Logistique()
     param_grid = {
-        'l2reg' : np.linspace(0.1, 10, 0.1),
-        'lr' : np.linspace(0.01, 1, 0.01)
+        'l2reg' : np.linspace(0.1, 10, 10),
+        'lr' : np.linspace(0.0001, 0.001, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
-    return search.best_estimator(), search.best_params()
+    search.fit(x_train, y_train)
+    return clone(search.best_estimator()), search.best_params()
 
 def HyperparameterSVM(x_train, y_train):
-    estimator = cs.SVM_Sigmoide_Kernel()
-    param_grid = {
-        'coef' : np.linspace(-1, 1, 0.1)
-    }
-    search = HyperparameterSearch(estimator, param_grid)
-    return search.best_estimator(), search.best_params()
+    return cs.SVM_Sigmoide_Kernel()
 
 def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
-    estimator = cn.neural_net(hidden_layers)
+    estimator = cn.neural_net(hidden_layers=hidden_layers)
     param_grid = {
-        'activation' : ['logistique', 'relu'],
-        'l2reg' : np.linspace(0.1, 10, 0.1),
-        'lr' : np.linspace(0.01, 1, 0.01),
-        'mu' : np.linspace(0, 1, 0.01)
+        'activation' : ['logistic', 'relu'],
+        'l2reg' : np.linspace(0.1, 10, 3),
+        'lr' : np.linspace(0.01, 1, 3),
+        'mu' : np.linspace(0, 1, 3)
     }
     search = HyperparameterSearch(estimator, param_grid)
-    return search.best_estimator(), search.besthttps://www.google.com/search?client=ubuntu&channel=fs&q=git+merge&ie=utf-8&oe=utf-8_params()
+    search.fit(x_train, y_train)
+    return clone(search.best_estimator()), search.best_params()
 
 def HyperparameterAdaboost(x_train, y_train):
     estimator = ca.adaboost()
     param_grid = {
-        'n_estimators' : np.arange(1, 101),
-        'lr' : np.linspace(0.01, 1, 0.01)
+        'n_estimators' : np.arange(1, 20),
+        'lr' : np.linspace(0.01, 1, 10)
     }
     search = HyperparameterSearch(estimator, param_grid)
-    return search.best_estimator(), search.best_params()
+    search.fit(x_train, y_train)
+    return clone(search.best_estimator()), search.best_params()
 
 def HyperparameterBagging(x_train, y_train):
     estimator = cb.bagging()
@@ -62,8 +64,10 @@ def HyperparameterBagging(x_train, y_train):
     neural_net, _ = HyperparameterNeuralNet(x_train, y_train)
     param_grid = {
         'estimator' : [adaboost, neural_net],
-        'n_estimator' : np.arange(1, 10),
+        'n_estimators' : np.arange(1, 10),
     }
+
     search = HyperparameterSearch(estimator, param_grid)
-    return search.best_estimator(), search.best_params()
+    search.fit(x_train, y_train)
+    return clone(search.best_estimator()), search.best_params()
 
