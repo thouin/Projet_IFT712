@@ -26,21 +26,27 @@
 \subsection{Réseaux de neuronnes}
 \begin{figure}[H]
     \centering
+    \includegraphics[width=17cm, height=10cm, keepaspectratio]{rn_plot2.png}
+    \caption{Figure diagrames "accuracy" et "loss" pour réseau de neuronne a une couche cachée }
+    \label{Figure diagrames "accuracy" et "loss" pour réseau de neuronne a une couche cachée }
+\end{figure}  
+\begin{figure}[H]
+    \centering
     \includegraphics[width=17cm, height=10cm, keepaspectratio]{rn_plot.png}
-    \caption{Figure diagrames "accuracy" et "loss" pour réseau de neuronne }
-    \label{Figure diagrames "accuracy" et "loss" pour réseau de neuronne }
+    \caption{Figure diagrames "accuracy" et "loss" pour réseau de neuronne a deux couches cachées }
+    \label{Figure diagrames "accuracy" et "loss" pour réseau de neuronne a deux couches cachées }
 \end{figure}   
 \par Pour "lr" entre 0.01 et 1, et pour "l2reg" entre 0.1 et 10, et pour "mu" entre 0 et 1, les meilleurs valeurs pour les hyper-paramètres "lr", "l2reg" et "mu" sont ceux affichés dans les deux figures ci-dessous
 \begin{figure}[H]
     \centering
     \includegraphics{rn_param_logistic.PNG}
-    \caption{Figure paramètres pour une fonction d'activation logistique}
+    \caption{Figure paramètres pour réseau de neurones à deux couches cachées}
     \label{paramètres pour une fonction d'activation logistique }
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics{rm_param_relu.PNG}
-    \caption{Figure paramètres pour une fonction d'activation RELU}
+    \caption{Figure paramètres pour réseau de neurones à une couche cachée}
     \label{paramètres pour une fonction d'activation RELU }
 \end{figure}
 \subsection{Bagging}
@@ -72,3 +78,9 @@
     \caption{Figure adaboost-error }
     \label{Figure fichier adaboost-error }
 \end{figure}
+
+\section{Analyse}
+\par En comparant les précisions d'entrainement et test, on constate que l'algorithme SVM a permis de faire une bonne classification par rapport aux algorithmes Bagging et Adaboost.
+\par D'apres les deux graphiques correpondants à la classification par réseau de neurones, on constate que le réseau ayant deux couches cachées ne fonctionne pas alors que  celui ayant un seule couche cachée converge rapidement vers la solution optimale.
+\par La classification par régression logistique converge aussi rapidement vers la solution optimale.
+
