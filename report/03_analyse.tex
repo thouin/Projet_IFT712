@@ -80,7 +80,11 @@
 \end{figure}
 
 \section{Analyse}
-\par En comparant les précisions d'entrainement et test, on constate que l'algorithme SVM a permis de faire une bonne classification par rapport aux algorithmes Bagging et Adaboost.
-\par D'apres les deux graphiques correpondants à la classification par réseau de neurones, on constate que le réseau ayant deux couches cachées ne fonctionne pas alors que  celui ayant un seule couche cachée converge rapidement vers la solution optimale.
-\par La classification par régression logistique converge aussi rapidement vers la solution optimale.
+\par En analysant les précisions d'entrainement et test, on constate que les algorithmes Bagging et Adaboost se sont avérés peu efficaces.
+\par D'après les deux graphiques correpondants à la classification par réseau de neurones, on constate que le réseau ayant deux couches cachées ne fonctionne pas alors que  celui ayant un seule couche cachée converge rapidement vers la solution optimale.
+\par La classification par régression logistique converge aussi rapidement vers la solution optimale. Ceci suggère que les données soient linéairement séparables.
+\par Le réseau de neurones à une couche caché semble avoir une erreur moindre et une plus grande précision que la régression logistique. Toutefois, il lui faut un plus
+grand nombre d'itérations pour
+converger vers la solution optimales. La régression logistique converge plus rapidement. L'algorithme SVM avec un noyau rbf a aussi obtenu de bon résultats et, de plus, 
+il est très facile à mettre en oeuvre, car il ne nécessite pas d'hyperparamètres.
 
