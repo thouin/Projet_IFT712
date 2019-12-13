@@ -2,6 +2,19 @@
 \par Dans cette partie nous allons analyser les résultats de chacun des algorithmes.
 \section{Résultats}
 \subsection{Régression logistique}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=17cm, height=10cm, keepaspectratio]{logistique_plot.png}
+    \caption{Figure diagrames "accuracy" et "loss" pour la régression logistique }
+    \label{Figure diagrames "accuracy" et "loss" pour la régression logistique  }
+\end{figure}
+\par Pour "lr" entre 0.0001 et 0.001, et pour "l2reg" entre 0.1 et 10, les meilleurs valeurs pour les hyper-paramètres "lr" et "l2reg" sont ceux affichés dans la figure ci-dessous
+\begin{figure}[H]
+    \centering
+    \includegraphics{logistique_param.PNG}
+    \caption{Figure parametres de régression logistique}
+    \label{Figure parametres de régression logistique }
+\end{figure}
 \subsection{SVM}
 \par Les erreurs et les précisions d'entrainement et de test:
 \begin{figure}[H]
@@ -11,9 +24,41 @@
     \label{Figure fichier svm-error }
 \end{figure}
 \subsection{Réseaux de neuronnes}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=17cm, height=10cm, keepaspectratio]{rn_plot.png}
+    \caption{Figure diagrames "accuracy" et "loss" pour réseau de neuronne }
+    \label{Figure diagrames "accuracy" et "loss" pour réseau de neuronne }
+\end{figure}   
+\par Pour "lr" entre 0.01 et 1, et pour "l2reg" entre 0.1 et 10, et pour "mu" entre 0 et 1, les meilleurs valeurs pour les hyper-paramètres "lr", "l2reg" et "mu" sont ceux affichés dans les deux figures ci-dessous
+\begin{figure}[H]
+    \centering
+    \includegraphics{rn_param_logistic.PNG}
+    \caption{Figure paramètres pour une fonction d'activation logistique}
+    \label{paramètres pour une fonction d'activation logistique }
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{rm_param_relu.PNG}
+    \caption{Figure paramètres pour une fonction d'activation RELU}
+    \label{paramètres pour une fonction d'activation RELU }
+\end{figure}
 \subsection{Bagging}
+\begin{figure}[H]
+    \centering
+    \includegraphics{bagging_param.PNG}
+    \caption{Figure bagging-param }
+    \label{Figure fichier bagging-param }
+\end{figure}
+\par Les précisions d'entrainement et de test:
+\begin{figure}[H]
+    \centering
+    \includegraphics{bagging.PNG}
+    \caption{Figure bagging-error }
+    \label{Figure fichier bagging-error }
+\end{figure}
 \subsection{AdaBoost} 
-\par Pour "lr" entre 0.01 et 1, et pour "n-estimators" entre 1 et 101, les meilleurs valeurs pour les hyper-paramètres "lr" et "n-estimator" sont ceux affichés dans la figure 3.2
+\par Pour "lr" entre 0.01 et 1, et pour "n-estimators" entre 1 et 101, les meilleurs valeurs pour les hyper-paramètres "lr" et "n-estimator" sont ceux affichés dans la figure ci-dessous
 \begin{figure}[H]
     \centering
     \includegraphics{adaboost_param.PNG}
@@ -27,4 +72,3 @@
     \caption{Figure adaboost-error }
     \label{Figure fichier adaboost-error }
 \end{figure}
-\section{Analyse}
