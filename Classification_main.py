@@ -29,8 +29,8 @@ def neural_net(x_train, x_test, y_train, y_test):
 
     est, params = ch.HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6))
     train_loss_list, train_accu_list, test_loss_list, test_accu_list = est.entrainement(x_train, y_train, x_test, y_test)
-    ci.io.plot(train_loss_list, train_accu_list, test_loss_list, test_accu_list, 'neural_net66.png')
-    ci.io.print_params(params, 'neural_net66_param.txt')
+    ci.io.plot(train_loss_list, train_accu_list, test_loss_list, test_accu_list, 'neural_net6.png')
+    ci.io.print_params(params, 'neural_net6_param.txt')
 
 def adaboost(x_train, x_test, y_train, y_test):
     print("-------- Application de adaboost avec un arbre de décision de profondeur un --------")
@@ -48,9 +48,9 @@ def bagging(x_train, x_test, y_train, y_test):
 
 def main():
     X_train, X_test, Y_train, Y_test = io.getData()
-    logistique(X_train, X_test, Y_train, Y_test)
+    #logistique(X_train, X_test, Y_train, Y_test)
     #svm(X_train, X_test, Y_train, Y_test)
-    #neural_net(X_train, X_test, Y_train, Y_test)
+    neural_net(X_train, X_test, Y_train, Y_test)
     #adaboost(X_train, X_test, Y_train, Y_test)
     #bagging(X_train, X_test, Y_train, Y_test)
 

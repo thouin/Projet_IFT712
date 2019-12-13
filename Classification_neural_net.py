@@ -8,7 +8,7 @@ from sklearn.metrics import log_loss
 import warnings
 
 class neural_net(BaseEstimator):
-    def __init__(self, activation='relu', l2reg=0.0, lr=0.001, solver='adam', mu=0.9, hidden_layers=(6, 6), tol=1e-4, max_iter=200):
+    def __init__(self, activation='relu', l2reg=0.0, lr=0.001, solver='adam', mu=0.9, hidden_layers=(6, 6), tol=1e-4, max_iter=1000):
         self.activation = activation
         self.l2reg = l2reg
         self.lr = lr
@@ -24,7 +24,8 @@ class neural_net(BaseEstimator):
         return self
         
     def score(self, data, target):
-        return self.model.score(data, target)
+        y_pred = self.model.predict_proba(data)
+        return -log_loss(target, y_pred, labels=np.arange(1, 4))
 
     def __epoch(self,x_train, y_train, x_valid, y_valid):
         classes = np.arange(1, 4)
@@ -35,9 +36,9 @@ class neural_net(BaseEstimator):
         y_valid_pred = self.model.predict_proba(x_valid)
         valid_loss = log_loss(y_valid, y_valid_pred, normalize=True, labels=classes)
         # On calcule la justesse pour les données de validation et d'entraînement
-        y_train_pred = np.argmax(y_train_pred, axis=1)
+        y_train_pred = np.argmax(y_train_pred, axis=1)+1
         train_accu = (y_train_pred == y_train).mean()
-        y_valid_pred = np.argmax(y_valid_pred, axis=1)
+        y_valid_pred = np.argmax(y_valid_pred, axis=1)+1
         valid_accu = (y_valid_pred == y_valid).mean()
         return train_loss, train_accu, valid_loss, valid_accu
 
@@ -58,12 +59,6 @@ class neural_net(BaseEstimator):
             valid_loss_list.append(valid_loss)
             train_accu_list.append(train_accu)
             valid_accu_list.append(valid_accu)
-            if (train_loss < best_loss):
-                best_loss = train_loss
-            if train_loss > best_loss - self.tol:
-                break
-        if delta_loss >= self.tol:
-            warnings.warn("neural_net: Nombre maximal d'itération atteint")
         return train_lost_list, train_accu_list, valid_loss_list, valid_accu_list
 
     def prediction(self, x):
