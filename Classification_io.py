@@ -3,6 +3,7 @@
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -24,6 +25,9 @@ class io():
         Y = df.Target
         X = df.loc[:, features]
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=0)
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.fit_transform(X_test)
         return X_train, X_test, Y_train, Y_test
     
     @staticmethod
