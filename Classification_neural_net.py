@@ -51,15 +51,16 @@ class neural_net(BaseEstimator):
         valid_loss_list.append(valid_loss)
         train_accu_list.append(train_accu)
         valid_accu_list.append(valid_accu)
-        delta_loss = 0
+        best_loss = 1e+10
         for i in range(self.max_iter-1):
             train_loss, train_accu, valid_loss, valid_accu = self.__epoch(x_train, y_train, x_valid, y_valid)
             train_lost_list.append(train_loss)
             valid_loss_list.append(valid_loss)
             train_accu_list.append(train_accu)
             valid_accu_list.append(valid_accu)
-            delta_loss = train_lost_list[-1] - train_lost_list[-2]
-            if delta_loss < self.tol:
+            if (train_loss < best_loss):
+                best_loss = train_loss
+            if train_loss > best_loss - self.tol:
                 break
         if delta_loss >= self.tol:
             warnings.warn("neural_net: Nombre maximal d'itération atteint")

@@ -12,7 +12,7 @@ import numpy as np
 
 class HyperparameterSearch:
     def __init__(self, estimator, param_grid):
-        self.grid = GridSearchCV(estimator, param_grid, n_jobs=-1)
+        self.grid = GridSearchCV(estimator, param_grid, n_jobs=-1, verbose=1)
 
     def fit(self, x_train, y_train):
         self.grid.fit(x_train, y_train)
@@ -26,7 +26,7 @@ class HyperparameterSearch:
 def HyperparameterLogistique(x_train, y_train):
     estimator = cl.Regression_Logistique()
     param_grid = {
-        'l2reg' : np.linspace(0.1, 1, 10),
+        'l2reg' : np.linspace(0.1, 10, 10),
         'lr' : np.linspace(0.0001, 0.001, 100)
     }
     search = HyperparameterSearch(estimator, param_grid)
@@ -39,10 +39,10 @@ def HyperparameterSVM(x_train, y_train):
 def HyperparameterNeuralNet(x_train, y_train, hidden_layers=(6, 6)):
     estimator = cn.neural_net(hidden_layers=hidden_layers)
     param_grid = {
-        'activation' : ['logistique', 'relu'],
-        'l2reg' : np.linspace(0.1, 10, 10),
-        'lr' : np.linspace(0.01, 1, 10),
-        'mu' : np.linspace(0, 1, 10)
+        'activation' : ['logistic', 'relu'],
+        'l2reg' : np.linspace(0.1, 10, 3),
+        'lr' : np.linspace(0.01, 1, 3),
+        'mu' : np.linspace(0, 1, 3)
     }
     search = HyperparameterSearch(estimator, param_grid)
     search.fit(x_train, y_train)
